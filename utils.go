@@ -136,7 +136,7 @@ func hslToRGB(h, s, l float64) (uint8, uint8, uint8) {
 	if l < 0.5 {
 		q = l * (1 + s)
 	} else {
-		q = l + s - l*s
+		q = l + s - float64(l*s)
 	}
 	p := 2*l - q
 
@@ -155,13 +155,13 @@ func hueToRGB(p, q, t float64) float64 {
 		t--
 	}
 	if t < 1/6.0 {
-		return p + (q-p)*6*t
+		return p + float64(float64(q-p)*6*t)
 	}
 	if t < 1/2.0 {
 		return q
 	}
 	if t < 2/3.0 {
-		return p + (q-p)*(2/3.0-t)*6
+		return p + float64((q-p)*(2/3.0-t)*6)
 	}
 	return p
 }

@@ -119,10 +119,10 @@ func resizeHorizontal(img image.Image, width int, filter ResampleFilter) *image.
 					i := w.index * 4
 					s := scanLine[i : i+4 : i+4]
 					aw := float64(s[3]) * w.weight
-					r += float64(s[0]) * aw
-					g += float64(s[1]) * aw
-					b += float64(s[2]) * aw
-					a += aw
+					r += float64(float64(s[0]) * aw)
+					g += float64(float64(s[1]) * aw)
+					b += float64(float64(s[2]) * aw)
+					a += float64(aw)
 				}
 				if a != 0 {
 					aInv := 1 / a
@@ -153,10 +153,10 @@ func resizeVertical(img image.Image, height int, filter ResampleFilter) *image.N
 					i := w.index * 4
 					s := scanLine[i : i+4 : i+4]
 					aw := float64(s[3]) * w.weight
-					r += float64(s[0]) * aw
-					g += float64(s[1]) * aw
-					b += float64(s[2]) * aw
-					a += aw
+					r += float64(float64(s[0]) * aw)
+					g += float64(float64(s[1]) * aw)
+					b += float64(float64(s[2]) * aw)
+					a += float64(aw)
 				}
 				if a != 0 {
 					aInv := 1 / a
